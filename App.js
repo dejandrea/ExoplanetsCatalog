@@ -1,10 +1,31 @@
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
 import Home from './screens/Home';
 import Details from './screens/Details';
 
 export default function App() {
   return (
-      <Home/>
+      <AppContainer/>
   );
 }
 
+const appStackNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        headerShown: false
+      }
+    },
+    Details: {
+      screen: Details
+    }
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
+
+const AppContainer = createAppContainer(appStackNavigator);
